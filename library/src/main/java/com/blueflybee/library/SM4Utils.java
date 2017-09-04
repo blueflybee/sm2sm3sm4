@@ -1,6 +1,7 @@
 package com.blueflybee.library;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,7 +48,7 @@ public class SM4Utils {
     }
   }
 
-  public byte[] encryptDataNoEncode_ECB(byte[] plainText) {
+  public byte[] encryptDataNoEncode_ECB(String plainText) {
     try {
       SM4_Context ctx = new SM4_Context();
       ctx.isPadding = true;
@@ -62,7 +63,7 @@ public class SM4Utils {
 
       SM4 sm4 = new SM4();
       sm4.sm4_setkey_enc(ctx, keyBytes);
-      byte[] encrypted = sm4.sm4_crypt_ecb(ctx, plainText);
+      byte[] encrypted = sm4.sm4_crypt_ecb(ctx, plainText.getBytes(UTF_8));
 //      String cipherText = new BASE64Encoder().encode(encrypted);
 //      if (cipherText != null && cipherText.trim().length() > 0) {
 //        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
@@ -121,7 +122,6 @@ public class SM4Utils {
       return null;
     }
   }
-
 
 
   public String encryptData_CBC(String plainText) {
@@ -209,13 +209,42 @@ public class SM4Utils {
     System.out.println("//////////////////////////////");
 
 
+//    unsigned char SM1_SM4_KEY[16]={ 0X01,0X23,0X45,0X67,0X89,0XAB,0XCD,0XEF,0XFE,0XDC,0XBA,0X98,0X76,0X54,0X32,0X10 };
+//    unsigned char SM4_PLAIN[16]={ 0X01,0X23,0X45,0X67,0X89,0XAB,0XCD,0XEF,0XFE,0XDC,0XBA,0X98,0X76,0X54,0X32,0X10 };
+//    unsigned char SM4_CIPHER[16]={ 0X68,0X1E,0XDF,0X34,0XD2,0X06,0X96,0X5E,0X86,0XB3,0XE9,0X4F,0X53,0X6E,0X42,0X46 };
     System.out.println("ECB模式无编码");
-    byte[] cipherByteText = sm4.encryptDataNoEncode_ECB(plainText.getBytes(UTF_8));
-    System.out.println("密文: " + new String(cipherByteText, UTF_8));
-    System.out.println("");
+    byte[] plainTextByte = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
+    byte[] keyByte = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
+    byte[] cipherByteText = new byte[]{0X68, 0X1E, (byte) 0XDF, 0X34, (byte) 0XD2, 0X06, (byte) 0X96, 0X5E, (byte) 0X86, (byte) 0XB3, (byte) 0XE9, 0X4F, 0X53, 0X6E, 0X42, 0X46};
+    System.out.println("明文: " + Arrays.toString(plainTextByte));
+//    sm4.setSecretKey(Util.encodeHexString(keyByte, true));
+//    sm4.setHexString(true);
+////    byte[] cipherByteText = sm4.encryptDataNoEncode_ECB(plainTextByte);
+//    System.out.println("密文: " + Arrays.toString(cipherByteText));
+//    System.out.println("");
+//
+//    cipherByteText = sm4.decryptDataNoDecode_ECB(cipherByteText);
+//    System.out.println("明文: " + Arrays.toString(cipherByteText));
+//    System.out.println("");
 
-    cipherByteText = sm4.decryptDataNoDecode_ECB(cipherByteText);
-    System.out.println("明文: " + new String(cipherByteText, UTF_8));
+    //加密 128bit
+    byte[] out = new byte[16];
+    SM4Byte sm4Byte = new SM4Byte();
+//    starttime = System.nanoTime();
+    sm4Byte.sms4(plainTextByte, 16, keyByte, out, 1);
+    System.out.println("密文: " + Arrays.toString(out));
+    System.out.println("");
+//    for (int i = 0; i < 16; i++)
+//      System.out.print(Integer.toHexString(out[i] & 0xff) + "\t");
+    //解密 128bit
+//    for (int i = 0; i < out.length; i++) {
+//      if (i >= 9) {
+//        out[i] = 0x00;
+//      }
+//    }
+//    System.out.println("密文: " + Arrays.toString(out));
+    sm4Byte.sms4(out, 16, keyByte, out, 0);
+    System.out.println("明文: " + Arrays.toString(out));
     System.out.println("");
   }
 

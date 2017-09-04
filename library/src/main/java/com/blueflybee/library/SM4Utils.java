@@ -234,6 +234,9 @@ public class SM4Utils {
     sm4Byte.sms4(plainTextByte, 16, keyByte, out, 1);
     System.out.println("密文: " + Arrays.toString(out));
     System.out.println("");
+
+    System.out.println("密文expected: " + Arrays.toString(cipherByteText));
+    System.out.println("");
 //    for (int i = 0; i < 16; i++)
 //      System.out.print(Integer.toHexString(out[i] & 0xff) + "\t");
     //解密 128bit

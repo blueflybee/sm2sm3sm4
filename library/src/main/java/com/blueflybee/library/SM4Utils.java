@@ -246,9 +246,28 @@ public class SM4Utils {
 //      }
 //    }
 //    System.out.println("密文: " + Arrays.toString(out));
-    sm4Byte.sms4(out, 16, keyByte, out, 0);
-    System.out.println("明文: " + Arrays.toString(out));
-    System.out.println("");
+//    sm4Byte.sms4(out, 16, keyByte, out, 0);
+//    System.out.println("明文: " + Arrays.toString(out));
+//    System.out.println("");
+//
+//    byte[] plainTextByte_1 = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
+//    byte[] plainTextByte_2 = new byte[]{0X68, 0X1E, (byte) 0XDF, 0X34, (byte) 0XD2, 0X06, (byte) 0X96, 0X5E, (byte) 0X86, (byte) 0XB3, (byte) 0XE9, 0X4F, 0X53, 0X6E, 0X42, 0X46};
+//    byte[] plainTextByte_3 = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10, 0X68, 0X1E, (byte) 0XDF, 0X34, (byte) 0XD2, 0X06, (byte) 0X96, 0X5E, (byte) 0X86, (byte) 0XB3, (byte) 0XE9, 0X4F, 0X53, 0X6E, 0X42, 0X46};
+//    System.out.println("明文1: " + Arrays.toString(plainTextByte_1));
+//    System.out.println("明文2: " + Arrays.toString(plainTextByte_2));
+//
+//    byte[] out1 = new byte[16];
+//    byte[] out2 = new byte[16];
+//    byte[] out3 = new byte[32];
+////    starttime = System.nanoTime();
+//    sm4Byte.sms4(plainTextByte_1, 16, keyByte, out1, 1);
+//    sm4Byte.sms4(plainTextByte_2, 16, keyByte, out2, 1);
+//    System.out.println("密文分开加密: " + Arrays.toString(out1) + Arrays.toString(out2));
+//    System.out.println("");
+//
+//    sm4Byte.sms4(plainTextByte_3, 32, keyByte, out3, 1);
+//    System.out.println("密文合并加密: " + Arrays.toString(out3));
+//    System.out.println("");
   }
 
   public String getSecretKey() {

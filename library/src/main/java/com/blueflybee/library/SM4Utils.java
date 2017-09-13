@@ -183,9 +183,6 @@ public class SM4Utils {
     System.out.println("//////////////////////////////");
 
 
-//    unsigned char SM1_SM4_KEY[16]={ 0X01,0X23,0X45,0X67,0X89,0XAB,0XCD,0XEF,0XFE,0XDC,0XBA,0X98,0X76,0X54,0X32,0X10 };
-//    unsigned char SM4_PLAIN[16]={ 0X01,0X23,0X45,0X67,0X89,0XAB,0XCD,0XEF,0XFE,0XDC,0XBA,0X98,0X76,0X54,0X32,0X10 };
-//    unsigned char SM4_CIPHER[16]={ 0X68,0X1E,0XDF,0X34,0XD2,0X06,0X96,0X5E,0X86,0XB3,0XE9,0X4F,0X53,0X6E,0X42,0X46 };
     System.out.println("ECB模式无编码");
     byte[] plainTextByte = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
     byte[] keyByte = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
@@ -213,44 +210,26 @@ public class SM4Utils {
     for (int i = 0; i < 16; i++)
       System.out.print(Integer.toHexString(cipherByteText[i] & 0xff) + "\t");
     System.out.println("");
-//    for (int i = 0; i < 16; i++)
-//      System.out.print(Integer.toHexString(out[i] & 0xff) + "\t");
-    //解密 128bit
-//    for (int i = 0; i < out.length; i++) {
-//      if (i >= 9) {
-//        out[i] = 0x00;
-//      }
-//    }
-//    System.out.println("密文: " + Arrays.toString(out));
-//    sm4Byte.sms4(out, 16, keyByte, out, 0);
-//    System.out.println("明文: " + Arrays.toString(out));
-//    System.out.println("");
-//
-//    byte[] plainTextByte_1 = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10};
-//    byte[] plainTextByte_2 = new byte[]{0X68, 0X1E, (byte) 0XDF, 0X34, (byte) 0XD2, 0X06, (byte) 0X96, 0X5E, (byte) 0X86, (byte) 0XB3, (byte) 0XE9, 0X4F, 0X53, 0X6E, 0X42, 0X46};
-//    byte[] plainTextByte_3 = new byte[]{0X01, 0X23, 0X45, 0X67, (byte) 0X89, (byte) 0XAB, (byte) 0XCD, (byte) 0XEF, (byte) 0XFE, (byte) 0XDC, (byte) 0XBA, (byte) 0X98, 0X76, 0X54, 0X32, 0X10, 0X68, 0X1E, (byte) 0XDF, 0X34, (byte) 0XD2, 0X06, (byte) 0X96, 0X5E, (byte) 0X86, (byte) 0XB3, (byte) 0XE9, 0X4F, 0X53, 0X6E, 0X42, 0X46};
-//    System.out.println("明文1: " + Arrays.toString(plainTextByte_1));
-//    System.out.println("明文2: " + Arrays.toString(plainTextByte_2));
-//
-//    byte[] out1 = new byte[16];
-//    byte[] out2 = new byte[16];
-//    byte[] out3 = new byte[32];
-////    starttime = System.nanoTime();
-//    sm4Byte.sms4(plainTextByte_1, 16, keyByte, out1, 1);
-//    sm4Byte.sms4(plainTextByte_2, 16, keyByte, out2, 1);
-//    System.out.println("密文分开加密: " + Arrays.toString(out1) + Arrays.toString(out2));
-//    System.out.println("");
-//
-//    sm4Byte.sms4(plainTextByte_3, 32, keyByte, out3, 1);
-//    System.out.println("密文合并加密: " + Arrays.toString(out3));
-//    System.out.println("");
 
-//    sm4.setSecretKey("1234567812345678");
-//    plainText = sm4.decryptData_ECB(testStr, false);
-//    System.out.println("plainText" + plainText.substring(0, 200));
-//    System.out.println("plainText" + plainText.substring(plainText.length() - 200));
+    //////////////////////////////////////////////////////////////////////////////////////
+    byte[] testKeyByte1 = new byte[]{0x4b, 0x77, (byte) 0xa4, 0x47, (byte) 0xd6, (byte) 0xb5, (byte) 0xe7, 0x22, 0x2a, (byte) 0xc9, 0x6e, 0x39, 0x6a, (byte) 0xb7, (byte) 0xa8, 0x37};
 
+    String testCipherText = "PPnoBLUnCfh/Ce5OdG096epu20hYdMWkiNWmfKM+HEZeo/wqYO/k1DhXmFpqTd+4GzfZ4xHDxcpNsksdr6GbV3+gIsWx/eNQptKxPNn0u2ZDrWiOOJSOxCHVOcbj4jPb8LKaEKsfLyFWC+1LgcHlj8xVeSXi7CJwgQlCH18FcMOAOe1Vj+n7nUeBFtmf3ntLY/5LtAkxPyY90/jiQzmCAjGWIpfoO3lWfKuitbUWOhopepbaFwqPOWQtwipcUdNKJRW33Q0BOWgTH/ApT17/85Fl0yrj8oWbwUKH/eaqhDVkRuhyuKn6vbpba6BSnVxj6zBCvhsKILtFuwQpJqdGxXxtkzuk7RvzvTMfM06VaRWJ/6/U2Lv+LwllbqNbEqXN7JGT38heDcp4OuPolPJbC7A/5pjfqiYsoHxK0Gm2dLe8a4m+pYlKcPXWKa7eRJiUQRqbEhy+NBWEQ8NSOMDBQ7x8Y5I2Ye4LD72fA9RNsOYplCWFeM6KZTDT/2yEPdIkgLrmzEe4cgRClQoMuZlOk7AYI2nkumLetWwROD2WTfLYtzZcvloHtBF8qw8ou5U+wKioim4uPsAoMe4DegIhzyPwJxLs2GN5IUb15/Yo8EbooNDpa7kJ1P9CEz6nvKOL6atzRv1QsU46nDeXMqym9665nFb0PZxEto6Y2a4OGVghBDU4BdOLic9F+ctEx8P3JzoF2e1+Flp5jr3OR+TwC1zUfqRMlUOyk4uq8lkWT6V3tEPc+9Q2plUjRjzE97x56ltnQY5ogjDh1dOH38JC1dUYKy0dlDktSNVKiQIyiHYJ8bRSRzlmVFL7tN7ReQy3gDntVY/p+51HgRbZn957S4wh3TksUtpRaaaUlXQWnbBTohiRPOccXDA7yANiDh0QbU2ZTlKa7MUXR0XcGYaTaOgPAXcJX2v1YWCPGdZ3i5Zx2W7s0YoFOxqw6VxUkacg";
+    String key = Util.encodeHexString(testKeyByte1);
+    System.out.println("key = " + key);
+    sm4.setSecretKey(key);
+    sm4.setHexString(true);
 
+    System.out.println("ECB模式");
+
+    plainText = sm4.decryptData_ECB(testCipherText);
+    System.out.println("明文: " + plainText);
+    System.out.println("");
+
+    String keyBase64 = "g0NfBacZwUg5xklALd1Tkw==";
+    byte[] bytes = new BASE64Decoder().decodeBuffer(keyBase64);
+    String result = Util.encodeHexString(bytes);
+    System.out.println("result = " + result);
   }
 
   public String getSecretKey() {

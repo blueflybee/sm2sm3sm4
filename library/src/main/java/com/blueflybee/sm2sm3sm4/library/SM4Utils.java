@@ -1,4 +1,4 @@
-package com.blueflybee.library;
+package com.blueflybee.sm2sm3sm4.library;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
 
 public class SM4Utils {
   public static final String UTF_8 = "UTF-8";

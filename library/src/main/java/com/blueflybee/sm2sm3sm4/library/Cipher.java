@@ -1,4 +1,4 @@
-package com.blueflybee.library;
+package com.blueflybee.sm2sm3sm4.library;
 
 import java.math.BigInteger;
 
@@ -6,6 +6,7 @@ import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
 import org.bouncycastle.crypto.params.ECPrivateKeyParameters;
 import org.bouncycastle.crypto.params.ECPublicKeyParameters;
 import org.bouncycastle.math.ec.ECPoint;
+
 
 public class Cipher 
 {

@@ -1,4 +1,4 @@
-package com.blueflybee.library;
+package com.blueflybee.sm2sm3sm4.library;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+  @Test
+  public void useAppContext() throws Exception {
+    // Context of the app under test.
+    Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.blueflybee.library.test", appContext.getPackageName());
-    }
+    assertEquals("com.blueflybee.sm2sm3sm4.library.test", appContext.getPackageName());
+  }
 }

@@ -1,4 +1,5 @@
-package com.blueflybee.library;
+package com.blueflybee.sm2sm3sm4.library;
+
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -10,6 +11,7 @@ import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.math.ec.ECFieldElement;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.ECFieldElement.Fp;
+
 
 public class SM2
 {

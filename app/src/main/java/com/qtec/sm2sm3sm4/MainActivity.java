@@ -3,7 +3,8 @@ package com.qtec.sm2sm3sm4;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.blueflybee.library.SM4Utils;
+import com.blueflybee.sm2sm3sm4.library.SM4Utils;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
 
     String plainText = "abcd";
 

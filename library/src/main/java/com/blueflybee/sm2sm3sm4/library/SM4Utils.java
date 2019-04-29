@@ -75,6 +75,50 @@ public class SM4Utils {
     }
   }
 
+  public byte[] encryptBytes_ECB(byte[] bytes) {
+    try {
+      SM4_Context ctx = new SM4_Context();
+      ctx.isPadding = true;
+      ctx.mode = SM4.SM4_ENCRYPT;
+
+      byte[] keyBytes;
+      if (hexString) {
+        keyBytes = Util.hexStringToBytes(secretKey);
+      } else {
+        keyBytes = secretKey.getBytes();
+      }
+
+      SM4 sm4 = new SM4();
+      sm4.sm4_setkey_enc(ctx, keyBytes);
+      return sm4.sm4_crypt_ecb(ctx, bytes);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  public byte[] decryptBytes_ECB(byte[] bytes) {
+    try {
+      SM4_Context ctx = new SM4_Context();
+      ctx.isPadding = true;
+      ctx.mode = SM4.SM4_DECRYPT;
+
+      byte[] keyBytes;
+      if (hexString) {
+        keyBytes = Util.hexStringToBytes(secretKey);
+      } else {
+        keyBytes = secretKey.getBytes();
+      }
+
+      SM4 sm4 = new SM4();
+      sm4.sm4_setkey_dec(ctx, keyBytes);
+      return sm4.sm4_crypt_ecb(ctx, bytes);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   public String decryptData_ECB(String cipherText, boolean isPadding) {
     try {
       SM4_Context ctx = new SM4_Context();

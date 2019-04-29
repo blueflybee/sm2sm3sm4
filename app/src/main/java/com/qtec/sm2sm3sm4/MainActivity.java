@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.blueflybee.sm2sm3sm4.library.SM4Utils;
+import com.qtec.sm2sm3sm4.utils.FileIOUtils;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 
 import static com.blueflybee.sm2sm3sm4.library.SM4Utils.UTF_8;
@@ -69,5 +71,40 @@ public class MainActivity extends AppCompatActivity {
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
+
+
+    testSm4File();
+  }
+
+  private void testSm4File() {
+    File filesDir = getFilesDir();
+    //test.txt
+    File file = new File(filesDir, "pic2.jpg");
+    File encryptFile = new File(filesDir, "en_pic2.jpg");
+    File decryptFile = new File(filesDir, "de_pic2.jpg");
+    System.out.println("file.exists() = " + file.exists());
+
+    System.out.println("/////////////////////以下是对文件进行加密解密///////////////////");
+    SM4Utils sm4 = new SM4Utils();
+    sm4.setSecretKey("JeF8U9wHFOMfs2Y8");
+    sm4.setHexString(false);
+
+    System.out.println("ECB模式");
+
+    byte[] bytesEncrypt = sm4.encryptBytes_ECB(FileIOUtils.readFile2BytesByStream(file.getPath()));
+//    for (byte encryptByte : bytesEncrypt)
+//      System.out.print(Integer.toHexString(encryptByte & 0xff) + "\t");
+//
+    FileIOUtils.writeFileFromBytesByStream(encryptFile, bytesEncrypt);
+//
+    byte[] encryptBytesFromFile = FileIOUtils.readFile2BytesByStream(encryptFile.getPath());
+
+    System.out.println();
+
+    byte[] result = sm4.decryptBytes_ECB(encryptBytesFromFile);
+//    System.out.println("明文: " + new String(result));
+
+    FileIOUtils.writeFileFromBytesByStream(decryptFile, result);
+
   }
 }
